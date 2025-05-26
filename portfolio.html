@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sameed Irfan - Technical Portfolio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: #000;
+        color: #fff;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      .left-menu {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 200px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .left-menu-top {
+        padding: 20px;
+      }
+
+      .menu-btn {
+        background: none;
+        border: none;
+        width: 30px;
+        height: 20px;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .menu-btn span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #fff;
+        margin: 4px 0;
+        transition: 0.3s;
+      }
+
+      .left-menu-middle {
+        padding: 0 20px;
+        margin-bottom: 40px;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+
+      .section-nav {
+        flex: 1;
+        padding: 0 20px;
+      }
+
+      .section-nav-item {
+        display: flex;
+        align-items: center;
+        padding: 15px 0;
+        cursor: pointer;
+        transition: opacity 0.3s;
+        text-decoration: none;
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .section-nav-item:hover {
+        opacity: 0.7;
+      }
+
+      .section-nav-item.active {
+        opacity: 1;
+        font-weight: 600;
+      }
+
+      .section-nav-item-number {
+        font-size: 12px;
+        margin-right: 15px;
+        opacity: 0.6;
+        font-weight: 300;
+      }
+
+      .page-container {
+        margin-left: 200px;
+      }
+
+      .horizontal-container {
+        width: 100%;
+      }
+
+      .panels-container {
+        width: 100%;
+      }
+
+      .panel {
+        min-height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .panel-split {
+        display: flex;
+      }
+
+      .editorial-split .editorial-content,
+      .editorial-split .editorial-image {
+        width: 50%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .editorial-content {
+        padding: 80px 60px;
+        background: #000;
+      }
+
+      .editorial-image {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .image-wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.1s ease-out;
+      }
+
+      .panel-full {
+        position: relative;
+        background: #000;
+      }
+
+      .panel-full-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+      }
+
+      .panel-full-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 2;
+      }
+
+      .panel-full-content {
+        position: relative;
+        z-index: 3;
+        padding: 80px 60px;
+        text-align: center;
+      }
+
+      .panel-fixed {
+        position: relative;
+        background: #000;
+      }
+
+      .panel-fixed-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+      }
+
+      .panel-fixed-content {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .chapter {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 30px;
+        opacity: 0.7;
+        font-weight: 300;
+      }
+
+      .title {
+        font-size: clamp(32px, 5vw, 64px);
+        font-weight: 300;
+        line-height: 1.2;
+        margin-bottom: 40px;
+        letter-spacing: -1px;
+      }
+
+      .text {
+        font-size: 18px;
+        line-height: 1.8;
+        opacity: 0.9;
+        max-width: 600px;
+      }
+
+      .space-text {
+        font-size: clamp(60px, 12vw, 120px);
+        font-weight: 700;
+        letter-spacing: 8px;
+        text-align: center;
+      }
+
+      .beyond-text {
+        font-size: clamp(80px, 15vw, 150px);
+        font-weight: 700;
+        letter-spacing: 10px;
+        margin-bottom: 40px;
+      }
+
+      .mega-text {
+        font-size: clamp(100px, 18vw, 200px);
+        font-weight: 700;
+        letter-spacing: 12px;
+        margin-bottom: 40px;
+      }
+
+      .panel-left,
+      .panel-right {
+        width: 50%;
+        padding: 80px 60px;
+        background: #000;
+      }
+
+      .direction-label {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        opacity: 0.7;
+      }
+
+      .quote-container {
+        margin-bottom: 40px;
+      }
+
+      .quote {
+        font-size: 24px;
+        font-style: italic;
+        line-height: 1.4;
+        margin-bottom: 20px;
+        font-weight: 300;
+      }
+
+      .author {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        opacity: 0.6;
+      }
+
+      .full-quote {
+        font-size: 18px;
+        font-style: italic;
+        line-height: 1.6;
+        margin: 40px 0;
+        padding: 30px;
+        border-left: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .image-container {
+        margin: 40px 0;
+      }
+
+      .conclusion-text {
+        font-size: 16px;
+        line-height: 1.7;
+        opacity: 0.8;
+      }
+
+      .panel-video {
+        position: relative;
+        background: #000;
+      }
+
+      .video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+      }
+
+      .panel-video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 2;
+      }
+
+      .panel-video-content {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .panel-contact {
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .contact-container {
+        text-align: center;
+      }
+
+      .contact-content {
+        max-width: 600px;
+      }
+
+      .contact-name {
+        margin-bottom: 40px;
+      }
+
+      .email-wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .email {
+        font-size: 24px;
+        color: #fff;
+        text-decoration: none;
+        transition: opacity 0.3s;
+      }
+
+      .email:hover {
+        opacity: 0.7;
+      }
+
+      .copy-email {
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+        padding: 8px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.3s;
+      }
+
+      .copy-email:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .copy-tooltip {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        background: #fff;
+        color: #000;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      .copy-tooltip.show {
+        opacity: 1;
+      }
+
+      .navigation {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        padding: 15px 25px;
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+      }
+
+      .nav-text {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.7;
+      }
+
+      .nav-progress {
+        width: 100px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.2);
+        position: relative;
+      }
+
+      .nav-progress-fill {
+        height: 100%;
+        background: #fff;
+        width: 11.11%;
+        transition: width 0.3s ease;
+      }
+
+      .split-text {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .skill-category {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .skill-category h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .skill-list {
+        font-size: 14px;
+        line-height: 1.6;
+        opacity: 0.8;
+      }
+
+      .project-card {
+        margin: 40px 0;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .project-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .project-description {
+        font-size: 16px;
+        line-height: 1.7;
+        opacity: 0.9;
+      }
+
+      .experience-item {
+        margin: 30px 0;
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        border-left: 3px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .experience-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .experience-duration {
+        font-size: 14px;
+        opacity: 0.7;
+        margin-bottom: 15px;
+      }
+
+      .experience-description {
+        font-size: 15px;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+
+      @media (max-width: 768px) {
+        .left-menu {
+          width: 100%;
+          height: auto;
+          position: relative;
+        }
+
+        .page-container {
+          margin-left: 0;
+        }
+
+        .panel-split {
+          flex-direction: column;
+        }
+
+        .editorial-split .editorial-content,
+        .editorial-split .editorial-image {
+          width: 100%;
+          height: 50vh;
+        }
+
+        .panel-left,
+        .panel-right {
+          width: 100%;
+        }
+
+        .editorial-content,
+        .panel-full-content,
+        .panel-left,
+        .panel-right {
+          padding: 40px 20px;
+        }
+
+        .navigation {
+          bottom: 20px;
+          right: 20px;
+          left: 20px;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="left-menu">
+      <div class="left-menu-top">
+        <button class="menu-btn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div class="left-menu-middle">
+        <div class="logo">SAMEED</div>
+      </div>
+      <div class="section-nav">
+        <a class="section-nav-item active" data-index="0">
+          <span class="section-nav-item-number">01</span>
+          <span>Introduction</span>
+        </a>
+        <a class="section-nav-item" data-index="1">
+          <span class="section-nav-item-number">02</span>
+          <span>Skills</span>
+        </a>
+        <a class="section-nav-item" data-index="2">
+          <span class="section-nav-item-number">03</span>
+          <span>Experience</span>
+        </a>
+        <a class="section-nav-item" data-index="3">
+          <span class="section-nav-item-number">04</span>
+          <span>Projects</span>
+        </a>
+        <a class="section-nav-item" data-index="4">
+          <span class="section-nav-item-number">05</span>
+          <span>Innovation</span>
+        </a>
+        <a class="section-nav-item" data-index="5">
+          <span class="section-nav-item-number">06</span>
+          <span>Journey</span>
+        </a>
+        <a class="section-nav-item" data-index="6">
+          <span class="section-nav-item-number">07</span>
+          <span>Vision</span>
+        </a>
+        <a class="section-nav-item" data-index="7">
+          <span class="section-nav-item-number">08</span>
+          <span>Future</span>
+        </a>
+        <a class="section-nav-item" data-index="8">
+          <span class="section-nav-item-number">09</span>
+          <span>Contact</span>
+        </a>
+      </div>
+    </div>
+    <!-- ----------------------------------- -->
+    <div class="carousel-wrapper">
+      <div class="carousel" id="carousel"></div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox-overlay" id="lightbox">
+      <span class="close-btn" id="closeBtn">&times;</span>
+      <img
+        class="lightbox-img"
+        id="lightboxImg"
+        src=""
+        alt="Vergrote afbeelding"
+      />
+    </div>
+    <!-- ----------------------------------- -->
+    <div class="page-container">
+      <div class="horizontal-container">
+        <div class="panels-container">
+          <!-- First panel: Introduction -->
+          <section class="panel panel-split editorial-split" data-index="0">
+            <div class="editorial-content">
+              <div class="panel-content">
+                <div class="chapter">Welcome</div>
+                <h1 class="title split-text">
+                  Crafting digital solutions that bridge imagination and reality
+                </h1>
+                <div class="text">
+                  <p class="split-text">
+                    I'm Sameed Irfan, a passionate software engineer
+                    specializing in full-stack development, machine learning,
+                    and DevOps. With a strong foundation in computer science and
+                    hands-on experience in cutting-edge technologies, I
+                    transform complex problems into elegant solutions.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="editorial-image">
+              <div class="image-wrapper">
+                <img
+                  src="web_temp.jpg"
+                  alt="Code and technology"
+                  class="parallax"
+                  data-speed="0.3"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- Second panel: Skills -->
+          <section class="panel panel-full" data-index="1">
+            <div class="image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                alt="Technology landscape"
+                class="panel-full-background parallax"
+                data-speed="0.2"
+              />
+            </div>
+            <div class="panel-full-overlay"></div>
+            <div class="panel-full-content">
+              <div class="chapter">Technical Arsenal</div>
+              <h2 class="title split-text">
+                Building tomorrow's solutions with today's technologies
+              </h2>
+              <div class="skills-grid">
+                <div class="skill-category">
+                  <h3>Languages</h3>
+                  <div class="skill-list">C • Java • Python • JavaScript</div>
+                </div>
+                <div class="skill-category">
+                  <h3>Web Technologies</h3>
+                  <div class="skill-list">
+                    Django • Flask • ReactJS • Node.js
+                  </div>
+                </div>
+                <div class="skill-category">
+                  <h3>Data & AI</h3>
+                  <div class="skill-list">
+                    Numpy • Pandas • Scikit-Learn • TensorFlow
+                  </div>
+                </div>
+                <div class="skill-category">
+                  <h3>Tools & DevOps</h3>
+                  <div class="skill-list">Git • Linux • Docker • CI/CD</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Third panel: Fixed panel with TECH -->
+          <section class="panel panel-fixed" data-index="2">
+            <div class="image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                alt="Abstract technology"
+                class="panel-fixed-image parallax"
+                data-speed="0.25"
+              />
+            </div>
+            <div class="panel-fixed-content">
+              <div class="space-text">EXPERIENCE</div>
+            </div>
+          </section>
+
+          <!-- Fourth panel: Experience -->
+          <section class="panel panel-split editorial-split" data-index="3">
+            <div class="editorial-image">
+              <div class="image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                  alt="Professional workspace"
+                  class="parallax"
+                  data-speed="0.3"
+                />
+              </div>
+            </div>
+            <div class="editorial-content">
+              <div class="panel-content">
+                <div class="chapter">Professional Growth</div>
+                <h2 class="title split-text">
+                  Learning through real-world challenges
+                </h2>
+                
+                <div class="experience-item">
+                  <div class="experience-title">
+                    Cognizant - Full Stack Development Training
+                  </div>
+                  <div class="experience-duration">June - July 2023</div>
+                  <div class="experience-description">
+                    Gained hands-on experience in full-stack development,
+                    working with technologies like Java, springboot effect
+                    to build dynamic web applications.
+                  </div>
+                </div>
+                <div class="experience-item">
+                  <div class="experience-title">
+                    HCL Software - DevOps Foundation Training
+                  </div>
+                  <div class="experience-duration">January - March 2024</div>
+                  <div class="experience-description">
+                    Gained comprehensive expertise in DevOps methodologies,
+                    CI/CD pipelines, and automation tools, earning certification
+                    through practical project implementation.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Fifth panel: Projects with INNOVATION -->
+          <section class="panel panel-full" data-index="4">
+            <div class="image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                alt="Innovation concept"
+                class="panel-full-background parallax"
+                data-speed="0.2"
+              />
+            </div>
+            <div class="panel-full-overlay"></div>
+            <div class="panel-full-content">
+              <div class="beyond-text">INNOVATION</div>
+              <div class="text">
+                <p class="split-text">
+                  Every project is an opportunity to push boundaries. From
+                  AI-driven agricultural solutions to intelligent chatbots, I
+                  create systems that make a meaningful impact.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Sixth panel: Split with project details -->
+          <section class="panel panel-split" data-index="5">
+            <div class="panel-left">
+              <div class="panel-content">
+                <div class="direction-label">Featured Projects</div>
+                <div class="project-card">
+                  <div class="project-title">
+                    AI-Driven Crop Management System
+                  </div>
+                  <div class="project-description">
+                    Developed a comprehensive agricultural platform using
+                    machine learning for predictive analytics on crop health,
+                    disease detection, and yield optimization. Integrated
+                    multiple APIs including WeatherAPI and SoilGrids for
+                    real-time environmental data.
+                  </div>
+                </div>
+                <div class="project-card">
+                  <div class="project-title">E-Commerce Platform</div>
+                  <div class="project-description">
+                    Built a full-stack cafe management system with seamless
+                    Razorpay payment integration, featuring inventory management
+                    and customer analytics.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-right">
+              <div class="panel-content">
+                <div class="direction-label">AI & Analytics</div>
+                <div class="project-card">
+                  <div class="project-title">Sentiment Analysis Platform</div>
+                  <div class="project-description">
+                    Created a Flask-based web application for real-time
+                    sentiment analysis using TextBlob, with Twitter API
+                    integration and performance optimization through
+                    Flask-Caching.
+                  </div>
+                </div>
+                <div class="project-card">
+                  <div class="project-title">Healthcare Prediction Model</div>
+                  <div class="project-description">
+                    Implemented supervised learning algorithms for heart disease
+                    prediction, analyzing patient data to provide accurate
+                    health outcome forecasts.
+                  </div>
+                </div>
+                <div class="full-quote">
+                  "Technology is best when it brings people together and solves
+                  real-world problems."
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Seventh panel: Vision -->
+          <section class="panel panel-full" data-index="6">
+            <div class="image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                alt="Future technology"
+                class="panel-full-background parallax"
+                data-speed="0.3"
+              />
+            </div>
+            <div class="panel-full-overlay"></div>
+            <div class="panel-full-content">
+              <div class="mega-text">VISION</div>
+              <div class="text">
+                <p class="split-text">
+                  Leveraging emerging technologies to create scalable solutions
+                  that address global challenges in healthcare, agriculture, and
+                  digital transformation.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Eighth panel: Future video placeholder -->
+          <section class="panel panel-video" data-index="7">
+            <div class="image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                alt="Digital future"
+                class="panel-full-background parallax"
+                data-speed="0.2"
+              />
+            </div>
+            <div class="panel-video-overlay"></div>
+            <div class="panel-video-content">
+              <div class="mega-text">FUTURE</div>
+            </div>
+          </section>
+
+          <!-- Ninth panel: Contact -->
+          <section class="panel panel-contact" data-index="8">
+            <div class="contact-container">
+              <div class="contact-content">
+                <div class="space-text contact-name">LET'S CONNECT</div>
+                <div class="email-wrapper">
+                  <a href="mailto:sameedirfan7@gmail.com" class="email"
+                    >sameedirfan7@gmail.com</a
+                  >
+                  <button
+                    class="copy-email"
+                    title="Copy email"
+                    aria-label="Copy email to clipboard"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect
+                        x="9"
+                        y="9"
+                        width="13"
+                        height="13"
+                        rx="2"
+                        ry="2"
+                      ></rect>
+                      <path
+                        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                      ></path>
+                    </svg>
+                  </button>
+                  <span class="copy-tooltip">Copied!</span>
+                </div>
+                <div style="margin-top: 30px; font-size: 16px; opacity: 0.8">
+                  <p>
+                    <a
+                      href="https://github.com/SameedIrfan7"
+                      style="
+                        color: #fff;
+                        text-decoration: none;
+                        margin-right: 20px;
+                      "
+                      >GitHub</a
+                    >
+                    <a
+                      href="https://linkedin.com/in/sameedirfan7"
+                      style="color: #fff; text-decoration: none"
+                      >LinkedIn</a
+                    >
+                  </p>
+                  <p style="margin-top: 10px">+91 911-044-3938</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="navigation">
+      <div class="nav-text">SCROLL</div>
+      <div class="nav-progress">
+        <div class="nav-progress-fill"></div>
+      </div>
+      <div class="nav-text">01 / 09</div>
+    </div>
+
+    <script>
+      // Smooth scrolling and navigation
+      let currentSection = 0;
+      const sections = document.querySelectorAll(".panel");
+      const navItems = document.querySelectorAll(".section-nav-item");
+      const progressFill = document.querySelector(".nav-progress-fill");
+      const navCounter = document.querySelector(
+        ".navigation .nav-text:last-child"
+      );
+
+      // Parallax effect
+      function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll(".parallax");
+
+        parallaxElements.forEach((element) => {
+          const speed = element.dataset.speed || 0.5;
+          const yPos = -(scrolled * speed);
+          element.style.transform = `translateY(${yPos}px)`;
+        });
+      }
+
+      // Update navigation based on scroll
+      function updateNavigation() {
+        const scrollPosition = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+
+        sections.forEach((section, index) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+
+          if (
+            scrollPosition >= sectionTop - windowHeight / 2 &&
+            scrollPosition < sectionTop + sectionHeight - windowHeight / 2
+          ) {
+            currentSection = index;
+          }
+        });
+
+        // Update active nav item
+        navItems.forEach((item, index) => {
+          if (index === currentSection) {
+            item.classList.add("active");
+          } else {
+            item.classList.remove("active");
+          }
+        });
+
+        // Update progress bar and counter
+        const progress = ((currentSection + 1) / sections.length) * 100;
+        progressFill.style.width = `${progress}%`;
+        navCounter.textContent = `${String(currentSection + 1).padStart(
+          2,
+          "0"
+        )} / ${String(sections.length).padStart(2, "0")}`;
+      }
+
+      // Scroll to section on nav click
+      navItems.forEach((item, index) => {
+        item.addEventListener("click", () => {
+          sections[index].scrollIntoView({ behavior: "smooth" });
+        });
+      });
+
+      // Parallax and navigation on scroll
+      window.addEventListener("scroll", () => {
+        updateParallax();
+        updateNavigation();
+      });
+
+      // Initial update
+      updateParallax();
+      updateNavigation();
+
+      // Split text animation
+      document.querySelectorAll(".split-text").forEach((el) => {
+        el.style.opacity = 1;
+        el.style.transform = "translateY(0)";
+      });
+
+      // Copy email functionality
+      const copyBtn = document.querySelector(".copy-email");
+      const email = document.querySelector(".email").textContent;
+      const tooltip = document.querySelector(".copy-tooltip");
+
+      copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(email).then(() => {
+          tooltip.classList.add("show");
+          setTimeout(() => tooltip.classList.remove("show"), 1200);
+        });
+      });
+
+      // Responsive menu (for mobile)
+      const menuBtn = document.querySelector(".menu-btn");
+      const leftMenu = document.querySelector(".left-menu");
+      menuBtn.addEventListener("click", () => {
+        leftMenu.classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>
